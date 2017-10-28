@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Home Page</h1>
+<a href="{% url 'posts:create' %}">New Post</a>
+<br><br><br>
+
+{% for post in posts.all %}
+  <a class="btn btn-success" href="/posts/{{post.id}}/upvote">UP</a> <br>
+  {{post.votes_total}} <br>
+  <a class="btn btn-danger" href="/posts/{{post.id}}/downvote">DOWN</a><br>
+  <a href="{{post.url}}">{{post.title}}</a>
+  <br> {{post.pub_date}} by {{post.author.username}}<br><br><br>
+{% endfor %}
+
+{% endblock %}
